@@ -1,15 +1,10 @@
 
-include("TestData.js");
-include("TestFramework.js");
+include("Framework/TestData.js");
+include("Framework/TestFramework.js");
 
 
-include("SplitMidiTest.js");
-
-
-
-
-
-function prepareToPlay(sampleRate, blockSize)
+include("Tests/HelloWorldTest.js");
+include("Tests/SplitMidiTest.js");function prepareToPlay(sampleRate, blockSize)
 {
 	
 }
