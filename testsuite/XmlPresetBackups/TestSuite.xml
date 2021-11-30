@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Processor Type="SynthChain" ID="TestSuite" Bypassed="0" Gain="1.0" Balance="0.0"
+           VoiceLimit="64.0" KillFadeTime="20.0" IconColour="0" packageName=""
+           BuildVersion="650">
+  <ChildProcessors>
+    <Processor Type="MidiProcessorChain" ID="Midi Processor" Bypassed="0">
+      <ChildProcessors>
+        <Processor Type="ScriptProcessor" ID="Interface" Bypassed="0">
+          <ChildProcessors/>
+          <Content/>
+          <UIData Source="TestSuiteUIData"/>
+        </Processor>
+      </ChildProcessors>
+    </Processor>
+    <Processor Type="ModulatorChain" ID="GainModulation" Bypassed="0" Intensity="1.0">
+      <ChildProcessors/>
+    </Processor>
+    <Processor Type="ModulatorChain" ID="PitchModulation" Bypassed="1" Intensity="0.0">
+      <ChildProcessors/>
+    </Processor>
+    <Processor Type="EffectChain" ID="FX" Bypassed="0">
+      <ChildProcessors>
+        <Processor Type="ScriptFX" ID="Script FX1" Bypassed="1">
+          <ChildProcessors/>
+          <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
+          <Content/>
+          <Networks>
+            <Network ID="dsp">
+              <Node FactoryPath="container.chain" ID="dsp" Bypassed="0">
+                <Nodes>
+                  <Node ID="split" FactoryPath="container.split" Bypassed="0">
+                    <Nodes>
+                      <Node ID="other" FactoryPath="container.chain" Bypassed="0">
+                        <Nodes/>
+                        <Parameters/>
+                      </Node>
+                      <Node ID="midichain" FactoryPath="container.midichain" Bypassed="0">
+                        <Nodes>
+                          <Node ID="midi_gate" FactoryPath="control.midi" Bypassed="0">
+                            <Properties>
+                              <Property ID="ClassId" Value=""/>
+                              <Property ID="Mode" Value="Gate"/>
+                            </Properties>
+                            <ModulationTargets>
+                              <Connection NodeId="logic_op" ParameterId="Left"/>
+                            </ModulationTargets>
+                            <ComplexData>
+                              <Tables/>
+                              <SliderPacks/>
+                              <AudioFiles/>
+                              <Filters/>
+                              <DisplayBuffers/>
+                            </ComplexData>
+                            <Parameters/>
+                          </Node>
+                          <Node ID="logic_op" FactoryPath="control.logic_op" Bypassed="0">
+                            <ModulationTargets>
+                              <Connection NodeId="osc" ParameterId="Gate"/>
+                            </ModulationTargets>
+                            <Parameters>
+                              <Parameter MinValue="0.0" MaxValue="1.0" ID="Left" Automated="1"/>
+                              <Parameter MinValue="0.0" MaxValue="1.0" ID="Right" Automated="1"/>
+                              <Parameter MinValue="0.0" MaxValue="2.0" StepSize="1.0" ID="Operator" Value="1.0"/>
+                            </Parameters>
+                          </Node>
+                          <Node ID="osc" FactoryPath="core.oscillator" Bypassed="0">
+                            <ComplexData>
+                              <DisplayBuffers>
+                                <DisplayBuffer Index="-1"/>
+                              </DisplayBuffers>
+                            </ComplexData>
+                            <Parameters>
+                              <Parameter MinValue="0.0" MaxValue="4.0" StepSize="1.0" ID="Mode" Value="0.0"/>
+                              <Parameter MinValue="20.0" MaxValue="20000.0" StepSize="0.1000000014901161"
+                                         SkewFactor="0.2299045622348785" ID="Frequency" Value="220.0"/>
+                              <Parameter MinValue="1.0" MaxValue="16.0" StepSize="1.0" ID="Freq Ratio"
+                                         Value="1.0"/>
+                              <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Gate" Automated="1"/>
+                              <Parameter MinValue="0.0" MaxValue="1.0" ID="Phase" Value="0.0"/>
+                              <Parameter MinValue="0.0" MaxValue="1.0" ID="Gain" Value="0.5"/>
+                            </Parameters>
+                          </Node>
+                          <Node ID="env" FactoryPath="envelope.simple_ar" Bypassed="0">
+                            <Properties>
+                              <Property ID="NumParameters" Value="2"/>
+                            </Properties>
+                            <SwitchTargets>
+                              <SwitchTarget>
+                                <Connections/>
+                              </SwitchTarget>
+                              <SwitchTarget>
+                                <Connections>
+                                  <Connection NodeId="logic_op" ParameterId="Right"/>
+                                </Connections>
+                              </SwitchTarget>
+                            </SwitchTargets>
+                            <ComplexData>
+                              <DisplayBuffers>
+                                <DisplayBuffer Index="-1" EmbeddedData=""/>
+                              </DisplayBuffers>
+                            </ComplexData>
+                            <Parameters>
+                              <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                         SkewFactor="0.3010300099849701" ID="Attack" Value="20.0"/>
+                              <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
+                                         SkewFactor="0.3010300099849701" ID="Release" Value="40.0"/>
+                              <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Gate" Value="0.0"/>
+                            </Parameters>
+                          </Node>
+                        </Nodes>
+                        <Parameters/>
+                      </Node>
+                    </Nodes>
+                    <Parameters/>
+                  </Node>
+                </Nodes>
+                <Parameters/>
+              </Node>
+            </Network>
+          </Networks>
+          <UIData>
+            <ContentProperties DeviceType="Desktop"/>
+          </UIData>
+        </Processor>
+      </ChildProcessors>
+    </Processor>
+  </ChildProcessors>
+  <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
+  <macro_controls>
+    <macro name="Macro 1" value="0.0" midi_cc="-1"/>
+    <macro name="Macro 2" value="0.0" midi_cc="-1"/>
+    <macro name="Macro 3" value="0.0" midi_cc="-1"/>
+    <macro name="Macro 4" value="0.0" midi_cc="-1"/>
+    <macro name="Macro 5" value="0.0" midi_cc="-1"/>
+    <macro name="Macro 6" value="0.0" midi_cc="-1"/>
+    <macro name="Macro 7" value="0.0" midi_cc="-1"/>
+    <macro name="Macro 8" value="0.0" midi_cc="-1"/>
+  </macro_controls>
+  <MidiAutomation/>
+  <MPEData Enabled="0"/>
+</Processor>
