@@ -1,5 +1,12 @@
 namespace TestData
 {
+	const var Empty512 =
+	{
+	  "NodeId": "dsp",
+	  "SignalType": "Empty",
+	  "SignalLength": 512
+	};
+
 	const var Empty8192WithSingleNote =
 	{
 	  "NodeId": "dsp",
