@@ -52,7 +52,7 @@ namespace TestFramework
 	
 	inline function createRootParameter(name, initialValue)
 	{
-		local p = n.get("dsp").getParameter(name);
+		local p = dsp.get("dsp").getParameter(name);
 		p.setValueSync(initialValue);
 		return p;
 	}
@@ -109,6 +109,8 @@ namespace TestFramework
 	
 	inline function assertSimilar(data1, data2, errorMessage)
 	{
+		numTestRuns++;
+	
 		if(Math.abs(data1 - data2) > 0.01)
 		{
 			Console.print("  FAIL: " + errorMessage);
@@ -118,6 +120,14 @@ namespace TestFramework
 				Console.assertTrue(false);
 		}
 	}
+	
+	inline function assertConsistency()
+		{
+			local one = run();
+			local two = run();
+			
+			assertEquals(one, two, "inconsistent results between runs");
+		}
 	
 	inline function assertEquals(data1, data2, errorMessage)
 	{

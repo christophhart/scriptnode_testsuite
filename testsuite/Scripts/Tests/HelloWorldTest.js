@@ -10,6 +10,10 @@ namespace HelloWorldTest
 	// Creates a test object with an empty 512 sample buffer
 	TestFramework.createTest(TestData.Empty512);
 	
+	// This simply runs the test twice, and compares the output to make sure
+	// that the test setup leads to predictable results.
+	TestFramework.assertConsistency();
+	
 	// run the test
 	const var run1 = TestFramework.run();
 	
