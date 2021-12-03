@@ -73,10 +73,21 @@ namespace TestFramework
 	
 	inline function loadAudioFile(name, fileName)
 	{
-		local c = n.get("conv");
+		local c = dsp.get("conv");
 		c.setComplexDataIndex("AudioFile", 0, 0);
 		local af = Engine.createAndRegisterAudioFile(0);
 		af.loadFile("{PROJECT_FOLDER}" + fileName);
+	}
+	
+	inline function setTableData(name, initialPointArray)
+	{
+		local t = dsp.get(name);
+		t.setComplexDataIndex("Table", 0, 0);
+		local tableData = Engine.createAndRegisterTableData(0);
+	
+		tableData.setTablePointsFromArray(initialPointArray);
+		
+		return tableData;
 	}
 	
 	inline function assertNotEmpty(data, errorMessage)
