@@ -15,7 +15,7 @@ This repository is open to contributions. In order to keep things consistent, pl
 Use `TestFramework.reset()` in order to create a new DspNetwork that you want to test.
 You can supply two JSON objects, one describing the layout and one with non-default parameters.
 
-```
+```javascript
 const var n = TestFramework.reset("testname", {
 	FactoryPath: "container.chain", ID: "myId",
 	Nodes: [
@@ -31,7 +31,7 @@ const var n = TestFramework.reset("testname", {
 
 ### Create a test and run it
 
-```
+```javascript
 const var t = TestFramework.createTest(TestData.Empty512);
 
 const var result = t.runTest();
@@ -43,7 +43,7 @@ const var result = t.runTest();
 
 Use the `TestFramework.assertXXX` functions in conjunction with a meaningful error message that will be logged if the test fails
 
-```
+```javascript
 Check that the result is not empty
 TestFramework.assertNotEmpty(result, "is empty")
 
@@ -61,7 +61,7 @@ TestFramework.assertEquals(result, result2);
 
 You can save the test result to a audio file and compare each subsequent run against the test file:
 
-```
+```javascript
 TestFramework.equalsReferenceFile(result);
 ```
 
@@ -71,6 +71,6 @@ TestFramework.equalsReferenceFile(result);
 
 This prints a statistic at the end for all tests that have been executed between calls to flush
 
-```
+```javascript
 TestFramework.flush()
 ```
