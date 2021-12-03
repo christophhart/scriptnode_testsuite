@@ -39,7 +39,7 @@ namespace TestData
 	  "SignalType": "Empty",
 	  "SignalLength": 8192,
 	  "HiseEvents": [
-	    { "Type": "NoteOn", "Channel": 1, "Value1": 22, "Value2": 127, "Timestamp": 400 },
+	    { "Type": "NoteOn", "Channel": 1, "Value1": 22, "Value2": 80, "Timestamp": 400 },
 	    { "Type": "NoteOff", "Channel": 1, "Value1": 22, "Value2": 127, "Timestamp": 5000 }
 	  ],
 	}

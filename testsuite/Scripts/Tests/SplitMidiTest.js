@@ -20,7 +20,7 @@ namespace SplitMidiTest
 		]
 	}, 
 	{
-		"logic_op.Operator": 1,
+		//"logic_op.Operator": 1,
 		"osc.Gain": 0.5,
 		"env.Attack": 20,
 		"env.Release": 40
