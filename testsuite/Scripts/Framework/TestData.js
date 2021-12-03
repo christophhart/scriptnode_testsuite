@@ -6,6 +6,32 @@ namespace TestData
 	  "SignalType": "Empty",
 	  "SignalLength": 512
 	};
+	
+	const var Empty8192 =
+		{
+		  "NodeId": "dsp",
+		  "SignalType": "Empty",
+		  "SignalLength": 8192
+		};
+	
+	const var Empty8192ParameterOffOn = 
+	{
+	  "NodeId": "dsp",
+	  "SignalType": "Empty",
+	  "SignalLength": 8192,
+	  "ParameterEvents": [
+	    {
+	      "Index": 0,
+	      "Value": 0.0,
+	      "Timestamp": 0
+	    },
+	    {
+		   "Index": 1,
+		   "Value": 1.0,
+		   "Timestamp": 512
+	    }
+	  ]
+	};
 
 	const var Empty8192WithSingleNote =
 	{

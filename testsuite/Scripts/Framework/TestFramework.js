@@ -50,6 +50,13 @@ namespace TestFramework
 		return dsp;
 	}
 	
+	inline function createRootParameter(name, initialValue)
+	{
+		local p = n.get("dsp").getParameter(name);
+		p.setValueSync(initialValue);
+		return p;
+	}
+	
 	inline function connectSingle(source, sourceIndex, targetNode, parameter)
 	{
 		dsp.get(source).connectTo(dsp.get(targetNode).getParameter(parameter), sourceIndex);
@@ -61,6 +68,15 @@ namespace TestFramework
 		{
 			connectSingle(s[0], s[1], s[2], s[3]);
 		}
+	}
+	
+	
+	inline function loadAudioFile(name, fileName)
+	{
+		local c = n.get("conv");
+		c.setComplexDataIndex("AudioFile", 0, 0);
+		local af = Engine.createAndRegisterAudioFile(0);
+		af.loadFile("{PROJECT_FOLDER}" + fileName);
 	}
 	
 	inline function assertNotEmpty(data, errorMessage)
@@ -78,6 +94,18 @@ namespace TestFramework
 
 		if(ASSERT_ON_FAILURE)
 			Console.assertTrue(s != 0);
+	}
+	
+	inline function assertSimilar(data1, data2, errorMessage)
+	{
+		if(Math.abs(data1 - data2) > 0.01)
+		{
+			Console.print("  FAIL: " + errorMessage);
+			numFailures++;
+			
+			if(ASSERT_ON_FAILURE)
+				Console.assertTrue(false);
+		}
 	}
 	
 	inline function assertEquals(data1, data2, errorMessage)
@@ -99,6 +127,7 @@ namespace TestFramework
 	inline function createTest(data)
 	{
 		currentTest = dsp.createTest(data);
+		return currentTest;
 	}
 	
 	inline function run()
