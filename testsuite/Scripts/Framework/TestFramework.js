@@ -160,10 +160,7 @@ namespace TestFramework
 	{
 		if(!isDefined(existingData))
 		{
-			local af = audioFiles.getChildFile(currentTestName + ".wav");
-					
-			af.writeAudioFile(dataToCompare, 44100.0, 24);
-			Console.print("Written reference file " + af.toString(0));
+			dump(dataToCompare, currentTestName, false);
 		}
 		else
 		{
@@ -181,5 +178,15 @@ namespace TestFramework
 			if(ASSERT_ON_FAILURE)
 				Console.assertNoString(s);
 		}
+	}
+	
+	inline function dump(data, filename, reveal)
+	{
+		local l = FileSystem.getFolder(FileSystem.AudioFiles).getChildFile(filename + ".wav");
+		l.writeAudioFile(data, 44100.0, 24);
+		Console.print("Written reference file " + l.toString(0));
+		
+		if(reveal)
+			l.show();
 	}
 }

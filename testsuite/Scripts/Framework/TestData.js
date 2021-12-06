@@ -1,10 +1,26 @@
 namespace TestData
 {
+	inline function empty(length)
+	{
+		return 	{
+		  "NodeId": "dsp",
+		  "SignalType": "Empty",
+		  "SignalLength": length
+		};
+	}
+	
 	const var Empty512 =
 	{
 	  "NodeId": "dsp",
 	  "SignalType": "Empty",
 	  "SignalLength": 512
+	};
+	
+	const var Empty1024 =
+	{
+	  "NodeId": "dsp",
+	  "SignalType": "Empty",
+	  "SignalLength": 1024
 	};
 	
 	const var Empty8192 =
@@ -39,7 +55,7 @@ namespace TestData
 	  "SignalType": "Empty",
 	  "SignalLength": 8192,
 	  "HiseEvents": [
-	    { "Type": "NoteOn", "Channel": 1, "Value1": 22, "Value2": 80, "Timestamp": 400 },
+	    { "Type": "NoteOn", "Channel": 1, "Value1": 22, "Value2": 80, "Timestamp": 256 },
 	    { "Type": "NoteOff", "Channel": 1, "Value1": 22, "Value2": 127, "Timestamp": 5000 }
 	  ],
 	}

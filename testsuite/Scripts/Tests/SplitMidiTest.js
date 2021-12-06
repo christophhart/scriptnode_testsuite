@@ -20,9 +20,11 @@ namespace SplitMidiTest
 		]
 	}, 
 	{
-		//"logic_op.Operator": 1,
+		"logic_op.Operator": 1,
+		"osc.Mode": 3,
 		"osc.Gain": 0.5,
-		"env.Attack": 20,
+		"osc.Gate": 0.0,
+		"env.Attack": 0,
 		"env.Release": 40
 	});
 	
@@ -31,6 +33,9 @@ namespace SplitMidiTest
 	                        ["logic_op",  0, "osc", 	 "Gate" ]]);
 	
 	TestFramework.createTest(TestData.Empty8192WithSingleNote);
+	
+	TestFramework.assertConsistency();
+	
 	
 	//! Run Test ===================================================================
 	
