@@ -90,6 +90,21 @@ namespace TestFramework
 		return tableData;
 	}
 	
+	inline function assertException(expectedException, errorMessage)
+	{
+		numTestRuns++;
+
+		local e = currentTest.getLastTestException();
+		
+		if(expectedException != e)
+		{
+			numFailures++;
+
+			Console.print("Expected: " + expectedException);
+			Console.print("Actual: " + e);
+		}
+	}
+	
 	inline function assertNotEmpty(data, errorMessage)
 	{
 		numTestRuns++;
@@ -129,6 +144,20 @@ namespace TestFramework
 			assertEquals(one, two, "inconsistent results between runs");
 		}
 	
+	inline function assertUnEquals(data1, data2, errorMessage)
+	{
+		numTestRuns++;
+		
+		local s = currentTest.expectEquals(data1, data2, -100);
+
+		if(s == 0)
+		{
+			Console.print("  FAIL: " + errorMessage);
+			numFailures++;
+		}
+		
+	}
+	
 	inline function assertEquals(data1, data2, errorMessage)
 	{
 		numTestRuns++;
@@ -143,6 +172,20 @@ namespace TestFramework
 			
 		if(ASSERT_ON_FAILURE)
 			Console.assertNoString(s);
+	}
+	
+	inline function assertNoException()
+	{
+		numTestRuns++;
+
+		const var m = currentTest.getLastTestException();
+		
+		if(m.length > 0)
+		{
+			Console.print("Fail: Exception thrown: " + m);
+			numFailures++;
+		}
+		
 	}
 	
 	inline function createTest(data)
