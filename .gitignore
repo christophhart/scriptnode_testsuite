@@ -1,1 +1,4 @@
 *.hip
+testsuite/AdditionalSourceCode/nodes/
+testsuite/AudioFiles/
+testsuite/DspNetworks/Binaries/
