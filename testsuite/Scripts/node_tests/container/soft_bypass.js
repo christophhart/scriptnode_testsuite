@@ -17,12 +17,8 @@ namespace SoftBypassTest
 	n.get("bp").connectToBypass("dsp.SoftBypass");
 	
 	TestFramework.createTest(TestData.Empty512);
-	
 	TestFramework.assertConsistency();
-	
-	
 	reg r = TestFramework.run();
-	
 	TestFramework.assertEquals(r[0], 0.0, "SoftBypass value not retained after connection");
 	
 	const var t = TestFramework.createTest({
@@ -44,7 +40,6 @@ namespace SoftBypassTest
 	});
 	
 	TestFramework.assertConsistency();
-	
 	
 	r = TestFramework.run();
 	
