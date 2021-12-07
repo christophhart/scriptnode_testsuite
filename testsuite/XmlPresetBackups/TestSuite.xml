@@ -29,24 +29,14 @@
             <Network ID="dsp">
               <Node FactoryPath="container.chain" ID="dsp" Bypassed="0" ShowParameters="1">
                 <Nodes>
-                  <Node ID="bp" FactoryPath="container.soft_bypass" Bypassed="0">
-                    <Nodes>
-                      <Node ID="add" FactoryPath="math.add" Bypassed="0">
-                        <Parameters>
-                          <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Value="1.0"/>
-                        </Parameters>
-                      </Node>
-                    </Nodes>
-                    <Parameters/>
+                  <Node ID="compiled_node" FactoryPath="project.compile_test03" Frozen="1"
+                        Bypassed="0">
+                    <Parameters>
+                      <Parameter MinValue="0.0" MaxValue="1.0" ID="Balance" Value="0.3"/>
+                    </Parameters>
                   </Node>
                 </Nodes>
-                <Parameters>
-                  <Parameter ID="SoftBypass" MinValue="0.0" MaxValue="1.0" Value="0.3">
-                    <Connections>
-                      <Connection NodeId="bp" ParameterId="Bypassed"/>
-                    </Connections>
-                  </Parameter>
-                </Parameters>
+                <Parameters/>
               </Node>
             </Network>
           </Networks>

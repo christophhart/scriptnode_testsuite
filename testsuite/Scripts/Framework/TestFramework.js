@@ -17,7 +17,7 @@ namespace TestFramework
 
 	inline function flush()
 	{
-		Console.print("End Test:   " + currentTestName + " - ran " + numTestRuns + " Tests. Failures: " + numFailures);
+		Console.print("Completed test:   " + currentTestName + " - ran " + numTestRuns + " Tests. Failures: " + numFailures);
 		
 		existingData = 0;
 		currentTest = {};
@@ -41,8 +41,6 @@ namespace TestFramework
 			existingData = undefined;
 		}
 			
-		Console.print("Begin Test: " + testName);
-
 		dsp.clear(true, true);
 		dsp.createFromJSON(treeObj, dsp);
 		dsp.setParameterDataFromJSON(parameterData);
@@ -141,7 +139,7 @@ namespace TestFramework
 			local one = run();
 			local two = run();
 			
-			assertEquals(one, two, "inconsistent results between runs");
+			return assertEquals(one, two, "inconsistent results between runs");
 		}
 	
 	inline function assertUnEquals(data1, data2, errorMessage)
@@ -156,13 +154,14 @@ namespace TestFramework
 			numFailures++;
 		}
 		
+		return s != 0;
 	}
 	
 	inline function assertEquals(data1, data2, errorMessage)
 	{
 		numTestRuns++;
 
-		local s = currentTest.expectEquals(data1, data2, -100);
+		local s = currentTest.expectEquals(data1, data2, -90);
 
 		if(s != 0)
 		{
@@ -172,6 +171,37 @@ namespace TestFramework
 			
 		if(ASSERT_ON_FAILURE)
 			Console.assertNoString(s);
+			
+		return s == 0;
+	}
+	
+	inline function assertSameAscii(data1, data2, message)
+	{
+		numTestRuns++;
+
+		local numLines = 80;
+		
+		local ok = currentTest.createAsciiDiff(data1, data2, numLines);
+		
+		local error = ok.indexOf("X");
+		
+		
+		
+		if(error != -1)
+		{
+			local errorMessage = "  FAIL: " + message + "\n";
+			
+			errorMessage += "Error at ASCII diff:";
+			
+			errorMessage += ok;
+			Console.print(errorMessage);
+			
+			numFailures++;
+			
+			return false;
+		}
+		
+		return true;
 	}
 	
 	inline function assertNoException()
@@ -184,8 +214,11 @@ namespace TestFramework
 		{
 			Console.print("Fail: Exception thrown: " + m);
 			numFailures++;
+			
+			return false;
 		}
 		
+		return true;
 	}
 	
 	inline function createTest(data)
@@ -204,6 +237,7 @@ namespace TestFramework
 		if(!isDefined(existingData))
 		{
 			dump(dataToCompare, currentTestName, false);
+			return true;
 		}
 		else
 		{
@@ -220,6 +254,8 @@ namespace TestFramework
 				
 			if(ASSERT_ON_FAILURE)
 				Console.assertNoString(s);
+				
+			return s == 0;
 		}
 	}
 	
@@ -232,4 +268,11 @@ namespace TestFramework
 		if(reveal)
 			l.show();
 	}
+	
+	inline function dumpAscii(d)
+	{
+		local l = currentTest.createBufferContentAsAsciiArt(d, 80);
+		Console.print(l);
+	}
+	
 }

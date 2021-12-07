@@ -23,6 +23,27 @@ namespace TestData
 	  "SignalLength": 1024
 	};
 	
+	const var Static4096 = 
+	{
+	  "NodeId": "dsp",
+	  "SignalType": "0dB Static",
+	  "SignalLength": 4096
+	};
+
+	const var Ramp1024 =
+	{
+	  "NodeId": "dsp",
+	  "SignalType": "Ramp",
+	  "SignalLength": 1024
+	};
+	
+	const var Impulse4096 =
+	{
+	  "NodeId": "dsp",
+	  "SignalType": "Impulse",
+	  "SignalLength": 4096
+	};
+	
 	const var Empty8192 =
 		{
 		  "NodeId": "dsp",

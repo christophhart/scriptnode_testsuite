@@ -1,20 +1,17 @@
 
 include("Framework/TestData.js");
 include("Framework/TestFramework.js");
+include("Framework/Utility.js");
 
+Console.print("\n\n=====================| Running Node Tests |======================\n");
 
-include("Tests/HelloWorldTest.js");
-include("Tests/SplitMidiTest.js");
+include("node_tests/includes.js");
 
-include("node_tests/control/cable_table.js");
-include("node_tests/envelope/simple_ar.js");
+Console.print("\n=====================| Running compile tests |=====================\n");
 
-include("node_tests/core/oscillator.js");
+include("compile_tests.js");
 
-include("node_tests/control/midi.js");
-include("node_tests/container/soft_bypass.js");
-
-
+Console.print("\n\n");
 
 function prepareToPlay(sampleRate, blockSize)
 {
