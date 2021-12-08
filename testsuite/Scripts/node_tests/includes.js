@@ -4,6 +4,7 @@ include("node_tests/container/multi.js");
 include("node_tests/container/soft_bypass.js");
 include("node_tests/control/cable_table.js");
 include("node_tests/control/midi.js");
+include("node_tests/control/tempo_sync.js");
 include("node_tests/control/xfader.js");
 include("node_tests/core/gain.js");
 include("node_tests/core/oscillator.js");
