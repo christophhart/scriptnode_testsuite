@@ -10,3 +10,4 @@ include("node_tests/core/gain.js");
 include("node_tests/core/oscillator.js");
 include("node_tests/core/ramp.js");
 include("node_tests/envelope/simple_ar.js");
+include("node_tests/math/expr.js");
