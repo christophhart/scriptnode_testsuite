@@ -1,6 +1,7 @@
-project_folder=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/testsuite
+project_root=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+project_folder="$project_root"/testsuite
 
-hise_path="$project_folder"/HISE.app/Contents/MacOS/HISE
+hise_path="$project_root"/HISE.app/Contents/MacOS/HISE
 
 echo "Project Folder: " $project_folder
 
