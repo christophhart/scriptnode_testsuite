@@ -9,6 +9,25 @@ namespace CompileTest
 	
 	Console.assertNoString(initTest.checkCompileHashCodes());
 	
+	const var dllInfo = initTest.getDllInfo();
+
+	if(dllInfo.InitError.length > 0)
+	{
+		Console.print("DLL Error: ");
+
+		Console.print(dllInfo.InitError);	
+	}
+
+	reg nodeString = "Found these nodes in DLL: ";
+
+	for(n in dllInfo.Nodes)
+	{
+		nodeString += n;
+		nodeString += ", ";
+	}
+
+	Console.print(nodeString);
+
 	const var compiledNodes = initTest.getListOfCompiledNodes();
 	const var compileableNodes = initTest.getListOfAllCompileableNodes();
 	
@@ -46,13 +65,14 @@ namespace CompileTest
 		n.setParameterDataFromJSON(testObj.Parameters);
 
 		local t = TestFramework.createTest(testObj.Signal);
-		
-		t.setProcessSpecs(uSpecs[0], uSpecs[1], uSpecs[2]);
-
 		Console.assertNoString(t.checkCompileHashCodes());
-		
+
 		TestFramework.assertConsistency();
 		
+		t.setProcessSpecs(uSpecs[0], uSpecs[1], uSpecs[2]);
+		TestFramework.run();
+		TestFramework.assertNoException();
+
 		local uncompiledResult = TestFramework.run();
 		
 		TestFramework.assertNoException();
@@ -60,15 +80,21 @@ namespace CompileTest
 		
 		cn.set("Frozen", 1);
 		
-		TestFramework.run();	
+		TestFramework.assertConsistency();	
 		TestFramework.assertNoException();
+
+		//! Test mono processing throwing an error
+
+		t.setProcessSpecs(1, uSpecs[1], uSpecs[2]);
+		TestFramework.run();
+		TestFramework.assertException("compiled_node - **Channel amount mismatch**:  \n`1` (expected: `2`)", 
+			                          "mono processing doesn't throw");
+
 		t.setProcessSpecs(cSpecs[0], cSpecs[1], cSpecs[2]);
 		
 		local compiledResult  = TestFramework.run();
 		
 		local asciiOk = TestFramework.assertSameAscii(uncompiledResult, compiledResult, "compiled node output doesn't match uncompiled output");
-		
-
 		local exactOk = TestFramework.assertEquals(uncompiledResult, compiledResult, "not a exact match");
 		
 		if(asciiOk && !exactOk)
