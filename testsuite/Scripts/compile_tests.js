@@ -7,8 +7,6 @@ namespace CompileTest
 	const var dsp = Engine.createDspNetwork("dsp");
 	const var initTest = dsp.createTest(TestData.Empty512);
 	
-	Console.assertTrue(false);
-
 	Console.assertNoString(initTest.checkCompileHashCodes());
 	
 	const var dllInfo = initTest.getDllInfo();
