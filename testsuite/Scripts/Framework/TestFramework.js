@@ -79,6 +79,16 @@ namespace TestFramework
 		local c = dsp.get("conv");
 		c.setComplexDataIndex("AudioFile", 0, 0);
 		local af = Engine.createAndRegisterAudioFile(0);
+
+		local fToLoad = FileSystem.getFolder(FileSystem.AudioFiles).getChildFile(fileName);
+
+		
+
+		if(!fToLoad.isFile())
+		{
+			Console.assertNoString("Can't find audio file " + fToLoad.toString(1));
+		}
+
 		af.loadFile("{PROJECT_FOLDER}" + fileName);
 	}
 	
