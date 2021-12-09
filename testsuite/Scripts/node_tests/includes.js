@@ -12,3 +12,4 @@ include("node_tests/core/ramp.js");
 include("node_tests/envelope/simple_ar.js");
 include("node_tests/filters/convolution.js");
 include("node_tests/math/expr.js");
+include("node_tests/routing/send_receive.js");
