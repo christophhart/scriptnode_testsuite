@@ -31,6 +31,14 @@ namespace CompileTestData
 			{
 				"compiled_node.Balance": 0.25
 			}
+		},
+		"compile_test04":
+		{
+			"Signal": TestData.Empty8192,
+			"Specs": [2, 44100.0, 4096],
+			"Parameters": {},
+			"preInterpretedCallback": function(n) { Engine.setHostBpm(80.0); },
+			"preCompileCallback": function(n) { Engine.setHostBpm(80.0); }
 		}
 	};
 }

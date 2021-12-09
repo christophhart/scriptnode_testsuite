@@ -67,6 +67,11 @@ namespace CompileTest
 		local t = TestFramework.createTest(testObj.Signal);
 		Console.assertNoString(t.checkCompileHashCodes());
 
+		if(isDefined(testObj.preInterpretedCallback))
+		{
+			testObj.preInterpretedCallback(n);
+		}
+
 		TestFramework.assertConsistency();
 		
 		t.setProcessSpecs(uSpecs[0], uSpecs[1], uSpecs[2]);
@@ -77,6 +82,11 @@ namespace CompileTest
 		
 		TestFramework.assertNoException();
 		TestFramework.assertNotEmpty(uncompiledResult, "uncompiled is empty");
+		
+		if(isDefined(testObj.preCompileCallback))
+		{
+			testObj.preCompileCallback(n);
+		}
 		
 		cn.set("Frozen", 1);
 		
@@ -101,6 +111,14 @@ namespace CompileTest
 		{
 			TestFramework.dump(compiledResult, name + "_compiled", false);
 			TestFramework.dump(uncompiledResult, name + "_uncompiled", true);
+		}
+
+		if(testObj.Dump)
+		{
+			Console.print("Uncompiled data: ");
+			TestFramework.dumpAscii(uncompiledResult);
+			Console.print("Compiled data: ");
+			TestFramework.dumpAscii(compiledResult);
 		}
 
 		TestFramework.assertNoException();	
