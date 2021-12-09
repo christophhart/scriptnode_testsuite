@@ -86,7 +86,7 @@ namespace TestFramework
 
 		if(!fToLoad.isFile())
 		{
-			Console.assertNoString("Can't find audio file " + fToLoad.toString(1));
+			Console.assertNoString("Can't find audio file " + fToLoad.toString(0));
 		}
 
 		af.loadFile("{PROJECT_FOLDER}" + fileName);
