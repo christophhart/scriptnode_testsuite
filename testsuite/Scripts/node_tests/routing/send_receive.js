@@ -75,15 +75,15 @@ namespace SendReceiveTests
 	}
 	
 	
-	//testExceptions(["chain", false], 			["chain", false], "");
-	//testExceptions(["modchain", false], 		["chain", false], "mismatch");
-	//testExceptions(["fix32_block", false], 		["fix8_block", false], "Blocksize mismatch");
-	//testExceptions(["fix32_block", false], 		["fix32_block", false], "");
-	//testExceptions(["modchain", false], 		["modchain", false], "");
-	//testExceptions(["oversample2x", false], 	["chain", false], "Samplerate mismatch");
-	//testExceptions(["oversample2x", false], 	["modchain", false], "mismatch");
+	testExceptions(["chain", false], 			["chain", false], "");
+	testExceptions(["modchain", false], 		["chain", false], "mismatch");
+	testExceptions(["fix32_block", false], 		["fix8_block", false], "Blocksize mismatch");
+	testExceptions(["fix32_block", false], 		["fix32_block", false], "");
+	testExceptions(["modchain", false], 		["modchain", false], "");
+	testExceptions(["oversample2x", false], 	["chain", false], "Samplerate mismatch");
+	testExceptions(["oversample2x", false], 	["modchain", false], "mismatch");
 	
-	//testExceptions(["oversample2x", true], 		["chain", false], "");
+	testExceptions(["oversample2x", true], 		["chain", false], "");
 }
 
 
