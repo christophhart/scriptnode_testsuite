@@ -103,9 +103,41 @@ namespace TestFramework
 		{
 			numFailures++;
 
+			Console.print("FAIL:  " + errorMessage);
 			Console.print("Expected: " + expectedException);
 			Console.print("Actual: " + e);
+			
+			return false;
 		}
+		
+		return true;
+	}
+	
+	inline function assertExceptionContains(exceptionType, errorMessage)
+	{
+		if(exceptionType.length == 0)
+		{
+			return assertNoException();
+		}
+	
+
+		numTestRuns++;
+
+		local e = currentTest.getLastTestException();
+		
+		local ok = e.indexOf(exceptionType) != -1;
+		
+		if(!ok)
+		{
+			numFailures++;
+
+			Console.print("FAIL:  " + errorMessage);
+			Console.print("Expected: " + exceptionType);
+			Console.print("Actual: " + e);
+			return false;
+		}
+		
+		return true;
 	}
 	
 	inline function assertNotEmpty(data, errorMessage)
@@ -118,7 +150,10 @@ namespace TestFramework
 		{
 			numFailures++;
 			Console.print("  FAIL: " + errorMessage);
+			return false;
 		}
+		
+		return true;
 	}
 	
 	inline function assertSimilar(data1, data2, errorMessage)
@@ -129,7 +164,10 @@ namespace TestFramework
 		{
 			Console.print("  FAIL: " + errorMessage);
 			numFailures++;
+			return false;
 		}
+		
+		return true;
 	}
 	
 	inline function assertConsistency()
