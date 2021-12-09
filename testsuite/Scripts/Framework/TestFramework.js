@@ -1,6 +1,6 @@
 namespace TestFramework
 {
-	const var ASSERT_ON_FAILURE = 0;
+	const var ASSERT_ON_FAILURE = 1;
 	Console.clear();
 
 	const var dsp = Engine.createDspNetwork("dsp");
@@ -19,6 +19,11 @@ namespace TestFramework
 	{
 		Console.print("Completed test:   " + currentTestName + " - ran " + numTestRuns + " Tests. Failures: " + numFailures);
 		
+		if(ASSERT_ON_FAILURE && numFailures > 0)
+		{
+			Console.assertNoString(numFailures + " tests failed");
+		}
+
 		existingData = 0;
 		currentTest = {};
 		currentTestName = "";
@@ -114,10 +119,6 @@ namespace TestFramework
 			numFailures++;
 			Console.print("  FAIL: " + errorMessage);
 		}
-			
-
-		if(ASSERT_ON_FAILURE)
-			Console.assertTrue(s != 0);
 	}
 	
 	inline function assertSimilar(data1, data2, errorMessage)
@@ -128,9 +129,6 @@ namespace TestFramework
 		{
 			Console.print("  FAIL: " + errorMessage);
 			numFailures++;
-			
-			if(ASSERT_ON_FAILURE)
-				Console.assertTrue(false);
 		}
 	}
 	
@@ -165,12 +163,9 @@ namespace TestFramework
 
 		if(s != 0)
 		{
-			Console.print("  FAIL: " + errorMessage);
+			Console.print("  FAIL: " + s + errorMessage);
 			numFailures++;
 		}
-			
-		if(ASSERT_ON_FAILURE)
-			Console.assertNoString(s);
 			
 		return s == 0;
 	}
@@ -251,9 +246,6 @@ namespace TestFramework
 				Console.print("  FAIL: Not equal to reference file");
 				Console.print("   " + s);
 			}
-				
-			if(ASSERT_ON_FAILURE)
-				Console.assertNoString(s);
 				
 			return s == 0;
 		}
