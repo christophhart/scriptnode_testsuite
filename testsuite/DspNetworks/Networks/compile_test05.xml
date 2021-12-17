@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Network ID="compile_test05" AllowCompilation="1">
+  <Node FactoryPath="container.chain" ID="compile_test05" Bypassed="0"
+        ShowParameters="1">
+    <Nodes>
+      <Node ID="add" FactoryPath="math.add" Bypassed="0">
+        <Parameters>
+          <Parameter MinValue="1.0" MaxValue="0.0" ID="Value" Automated="1"/>
+        </Parameters>
+      </Node>
+    </Nodes>
+    <Parameters>
+      <Parameter ID="Parameter" MinValue="0.0" MaxValue="1.0" Value="1.0">
+        <Connections>
+          <Connection NodeId="add" ParameterId="Value"/>
+        </Connections>
+      </Parameter>
+    </Parameters>
+  </Node>
+</Network>

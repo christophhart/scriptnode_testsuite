@@ -39,6 +39,18 @@ namespace CompileTestData
 			"Parameters": {},
 			"preInterpretedCallback": function(n) { Engine.setHostBpm(80.0); },
 			"preCompileCallback": function(n) { Engine.setHostBpm(80.0); }
+		},
+		"compile_test05":
+		{
+			"Signal": TestData.Empty512,
+			"Specs": [ 2, 44100.0, 512],
+			"Parameters": { "compiled_node.Parameter": 0.2 }
+		},
+		"compile_test06":
+		{
+			"Signal": TestData.Ramp8192,
+			"Specs": [ 2, 44100.0, 512],
+			"Parameters": {}
 		}
 	};
 }

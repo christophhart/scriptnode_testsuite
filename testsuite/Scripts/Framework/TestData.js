@@ -36,6 +36,13 @@ namespace TestData
 	  "SignalType": "Ramp",
 	  "SignalLength": 1024
 	};
+
+	const var Ramp8192 =
+	{
+	  "NodeId": "dsp",
+	  "SignalType": "Ramp",
+	  "SignalLength": 8192
+	};
 	
 	const var Impulse4096 =
 	{
