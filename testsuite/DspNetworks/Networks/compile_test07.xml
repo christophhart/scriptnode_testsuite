@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Network ID="compile_test07" AllowCompilation="1">
+  <Node FactoryPath="container.chain" ID="compile_test07" Bypassed="0">
+    <Nodes>
+      <Node ID="DSP_Test_Chain" FactoryPath="container.chain" Bypassed="0"
+            ShowParameters="1">
+        <Nodes>
+          <Node ID="DSP_Test_Frame" FactoryPath="container.frame2_block" Bypassed="0"
+                ShowParameters="1">
+            <Nodes>
+              <Node ID="DSP_Math" FactoryPath="math.expr" Bypassed="0">
+                <Properties>
+                  <Property ID="Code" Value="(2 / Math.PI) * Math.atan(input * (40.0 * value))"/>
+                  <Property ID="Debug" Value="0"/>
+                </Properties>
+                <Parameters>
+                  <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1"/>
+                </Parameters>
+              </Node>
+            </Nodes>
+            <Parameters>
+              <Parameter ID="Value" MinValue="0.0" MaxValue="1.0" Automated="1">
+                <Connections>
+                  <Connection NodeId="DSP_Math" ParameterId="Value"/>
+                </Connections>
+              </Parameter>
+            </Parameters>
+          </Node>
+        </Nodes>
+        <Parameters>
+          <Parameter ID="Control" MinValue="0.0" MaxValue="1.0" Value="1.0">
+            <Connections>
+              <Connection NodeId="DSP_Test_Frame" ParameterId="Value"/>
+            </Connections>
+          </Parameter>
+        </Parameters>
+      </Node>
+    </Nodes>
+    <Parameters/>
+  </Node>
+</Network>

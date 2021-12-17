@@ -51,6 +51,12 @@ namespace CompileTestData
 			"Signal": TestData.Ramp8192,
 			"Specs": [ 2, 44100.0, 512],
 			"Parameters": {}
+		},
+		"compile_test07":
+		{
+			"Signal": TestData.OneKhzSine4096,
+			"Specs": [ 2, 44100.0, 512],
+			"Parameters": {}
 		}
 	};
 }

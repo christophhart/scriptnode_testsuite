@@ -77,6 +77,12 @@ namespace TestData
 	  ]
 	};
 
+	const var OneKhzSine4096 = {
+	  "NodeId": "dsp",
+	  "SignalType": "1kHz Sine",
+	  "SignalLength": 4096
+	};
+
 	const var Empty8192WithSingleNote =
 	{
 	  "NodeId": "dsp",
