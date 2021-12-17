@@ -57,6 +57,13 @@ namespace CompileTestData
 			"Signal": TestData.OneKhzSine4096,
 			"Specs": [ 2, 44100.0, 512],
 			"Parameters": {}
+		},
+		"compile_test08":
+		{
+			"Signal": TestData.Impulse4096,
+			"Specs": [ 2, 44100.0, 512],
+			"Parameters": { "compiled_node.Feedback": 0.59,
+						    "compiled_node.delay_time": 0.15}
 		}
 	};
 }
