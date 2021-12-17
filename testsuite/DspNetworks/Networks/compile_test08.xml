@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Network ID="compile_test08" AllowCompilation="1">
+  <Node FactoryPath="container.chain" ID="compile_test08" Bypassed="0" ShowParameters="1">
+    <Nodes>
+      <Node ID="receive" FactoryPath="routing.receive" Bypassed="0">
+        <Parameters>
+          <Parameter MinValue="0.0" MaxValue="1.0" ID="Feedback" Automated="1"/>
+        </Parameters>
+      </Node>
+      <Node ID="fix_delay" FactoryPath="core.fix_delay" Bypassed="0">
+        <Parameters>
+          <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
+                     SkewFactor="0.3010300099849701" ID="DelayTime" Automated="1"/>
+          <Parameter MinValue="0.0" MaxValue="1024.0" StepSize="1.0" ID="FadeTime"
+                     Value="512.0"/>
+        </Parameters>
+      </Node>
+      <Node ID="send" FactoryPath="routing.send" Bypassed="0">
+        <Properties>
+          <Property ID="Connection" Value="receive"/>
+        </Properties>
+        <Parameters/>
+      </Node>
+    </Nodes>
+    <Parameters>
+      <Parameter ID="Feedback" MinValue="0.0" MaxValue="1.0" Value="0.584">
+        <Connections>
+          <Connection NodeId="receive" ParameterId="Feedback"/>
+        </Connections>
+      </Parameter>
+      <Parameter ID="delay_time" MinValue="0.0" MaxValue="1.0" Value="0.708">
+        <Connections>
+          <Connection NodeId="fix_delay" ParameterId="DelayTime"/>
+        </Connections>
+      </Parameter>
+    </Parameters>
+  </Node>
+</Network>
