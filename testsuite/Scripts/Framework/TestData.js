@@ -92,5 +92,21 @@ namespace TestData
 	    { "Type": "NoteOn", "Channel": 1, "Value1": 22, "Value2": 80, "Timestamp": 256 },
 	    { "Type": "NoteOff", "Channel": 1, "Value1": 22, "Value2": 127, "Timestamp": 5000 }
 	  ],
-	}
+	};
+	
+	const var Empty16kWithSustainedNote = 
+	{
+	  "NodeId": "dsp",
+	  "SignalType": "Empty",
+	  "SignalLength": 16384,
+	  "HiseEvents": [
+	    { "Type": "NoteOn", "Channel": 1, "Value1": 51, "Value2": 127, "Timestamp": 2000 },
+	    { "Type": "Controller", "Channel": 1,"Value1": 64, "Value2": 127, "Timestamp": 4000 },
+	    { "Type": "NoteOff", "Channel": 1, "Value1": 51, "Value2": 127, "Timestamp": 6000 },
+	    { "Type": "NoteOn", "Channel": 1, "Value1": 66, "Value2": 127, "Timestamp": 8000 },
+	    { "Type": "NoteOff", "Channel": 1, "Value1": 66, "Value2": 127, "Timestamp": 10000 },
+	    { "Type": "Controller", "Channel": 1, "Value1": 64, "Value2": 0, "Timestamp": 12000 }
+	  ],
+	  "ParameterEvents": []
+	};
 }
